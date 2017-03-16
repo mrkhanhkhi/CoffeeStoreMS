@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Cash" representedClassName="Cash" syncable="YES" codeGenerationType="class">
+        <attribute name="cashAmount" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toCash" inverseEntity="Item" syncable="YES"/>
+        <relationship name="toStore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="toCash" inverseEntity="Store" syncable="YES"/>
+        <relationship name="toTables" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tables" syncable="YES"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="itemID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="toCash" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cash" inverseName="toItem" inverseEntity="Cash" syncable="YES"/>
+        <relationship name="toItemType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemType" inverseName="toItem" inverseEntity="ItemType" syncable="YES"/>
+        <relationship name="toStore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="toItem" inverseEntity="Store" syncable="YES"/>
+        <relationship name="toTables" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tables" inverseName="toItem" inverseEntity="Tables" syncable="YES"/>
+    </entity>
+    <entity name="ItemType" representedClassName="ItemType" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toItemType" inverseEntity="Item" syncable="YES"/>
+    </entity>
+    <entity name="Store" representedClassName="Store" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toCash" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cash" inverseName="toStore" inverseEntity="Cash" syncable="YES"/>
+        <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toStore" inverseEntity="Item" syncable="YES"/>
+        <relationship name="toItemType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemType" syncable="YES"/>
+    </entity>
+    <entity name="Tables" representedClassName="Tables" syncable="YES" codeGenerationType="class">
+        <attribute name="checkOut" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="itemType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="toTables" inverseEntity="Item" syncable="YES"/>
+        <relationship name="toStore" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Store" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Tables" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Item" positionX="-63" positionY="9" width="128" height="165"/>
+        <element name="ItemType" positionX="-54" positionY="45" width="128" height="75"/>
+        <element name="Store" positionX="-36" positionY="45" width="128" height="120"/>
+        <element name="Cash" positionX="-18" positionY="54" width="128" height="105"/>
+    </elements>
+</model>
